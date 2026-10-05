@@ -21,7 +21,7 @@ from . import lang_EU
 
 
 class Num2Word_NO(lang_EU.Num2Word_EU):
-    GIGA_SUFFIX = "illard"
+    GIGA_SUFFIX = "illiard"
     MEGA_SUFFIX = "illion"
     CURRENCY_FORMS = {'NOK': (('krone', 'kroner'), ('øre', 'øre'))}
 

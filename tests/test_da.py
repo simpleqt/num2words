@@ -29,6 +29,12 @@ class Num2WordsDKTest(TestCase):
         self.assertEqual(num2words(5, to="ordinal", lang="da"), "femte")
 
     def test_cardinal(self):
+        self.assertEqual(num2words(1000000, to="cardinal", lang="da"),
+                         "en million")
+        self.assertEqual(num2words(2000000, to="cardinal", lang="da"),
+                         "to millioner")
+        self.assertEqual(num2words(1000000000, to="cardinal", lang="da"),
+                         "en milliard")
         self.assertEqual(num2words(0, to="cardinal", lang="da"), "nul")
         self.assertEqual(num2words(1, to="cardinal", lang="da"), "et")
         self.assertEqual(num2words(2, to="cardinal", lang="da"), "to")

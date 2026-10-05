@@ -43,6 +43,8 @@ class Num2WordsNOTest(TestCase):
                          "fjorten million fire tusen fem hundre og trettifem")
         self.assertEqual(num2words(1.5, to="cardinal", lang="no"),
                          "en komma fem")
+        self.assertEqual(num2words(1000000000, to="cardinal", lang="no"),
+                         "en milliard")
 
     def test_ordinal(self):
         self.assertEqual(num2words(1, to="ordinal", lang="no"), "første")

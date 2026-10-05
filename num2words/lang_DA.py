@@ -74,6 +74,9 @@ class Num2Word_DA(lang_EU.Num2Word_EU):
             if nnum < 10 ** 6 or self.ordflag:
                 return next
             ctext = "en"
+            # the scale words are stored in their plural form; a count of
+            # exactly one takes the singular (millioner -> million)
+            ntext = ntext[:-2]
         if nnum > cnum:
             if nnum >= 10 ** 6:
                 ctext += " "
