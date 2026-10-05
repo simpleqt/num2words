@@ -107,8 +107,10 @@ class Num2Word_KO(Num2Word_Base):
                 pass
             lastwords[-1] = ''.join(ten_one)
         else:
-            lastwords[-1] = self.ords[lastwords[-1]]
-        outwords[-1] = "백 ".join(lastwords)
+            # exact multiples of 100/1000 have no ordinal word form; the
+            # cardinal numeral is kept (백 번째, 이백 번째, 천 번째)
+            lastwords[-1] = self.ords.get(lastwords[-1], lastwords[-1])
+        outwords[-1] = "백 ".join(lastwords).strip()
         return " ".join(outwords) + " 번째"
 
     def to_ordinal_num(self, value):
