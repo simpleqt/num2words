@@ -91,6 +91,11 @@ class Num2Word_FR(Num2Word_EU):
                 word = word[:-len(src)] + repl
                 break
         else:
+            # the plural "s" of vingts/cents/millions/milliards is an
+            # agreement marker that disappears in derived words:
+            # quatre-vingts -> quatre-vingtième, deux cents -> deux centième
+            if word.endswith(("vingts", "cents", "millions", "milliards")):
+                word = word[:-1]
             if word[-1] == "e":
                 word = word[:-1]
             word = word + "ième"
