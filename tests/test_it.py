@@ -29,6 +29,9 @@ TEST_CASES_TO_CURRENCY_EUR = (
     (21.29, 'ventun euro e ventinove centesimi'),
     (81.25, 'ottantun euro e venticinque centesimi'),
     (100.00, 'cento euro e zero centesimi'),
+    # Negative amounts keep the "meno" prefix of the cardinal form.
+    (-1.00, 'meno un euro e zero centesimi'),
+    (-21.29, 'meno ventun euro e ventinove centesimi'),
 )
 
 TEST_CASES_TO_CURRENCY_USD = (
@@ -39,6 +42,9 @@ TEST_CASES_TO_CURRENCY_USD = (
     (21.29, 'ventun dollari e ventinove centesimi'),
     (81.25, 'ottantun dollari e venticinque centesimi'),
     (100.00, 'cento dollari e zero centesimi'),
+    # Negative amounts keep the "meno" prefix of the cardinal form.
+    (-1.00, 'meno un dollaro e zero centesimi'),
+    (-81.25, 'meno ottantun dollari e venticinque centesimi'),
 )
 
 TEST_CASES_TO_CURRENCY_GBP = (
@@ -49,6 +55,9 @@ TEST_CASES_TO_CURRENCY_GBP = (
     (21.29, 'ventun sterline e ventinove penny'),
     (81.25, 'ottantun sterline e venticinque penny'),
     (100.00, 'cento sterline e zero penny'),
+    # "una" is kept after the "meno" prefix of negative amounts.
+    (-1.00, 'meno una sterlina e zero penny'),
+    (-21.29, 'meno ventun sterline e ventinove penny'),
 )
 
 

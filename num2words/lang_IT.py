@@ -62,6 +62,10 @@ class Num2Word_IT(Num2Word_EU):
     }
     MINUS_PREFIX_WORD = "meno "
     FLOAT_INFIX_WORD = " virgola "
+    # ``Num2Word_Base.__init__`` sets ``negword``, but this class does not
+    # run it (it builds its own word tables), so it has to be declared here:
+    # the inherited ``to_currency`` reads it for negative amounts.
+    negword = MINUS_PREFIX_WORD
 
     def setup(self):
         Num2Word_EU.setup(self)
@@ -190,8 +194,10 @@ class Num2Word_IT(Num2Word_EU):
         # e.g. "una sterlina"
         if currency in CURRENCIES_UNA:
             list_result = result.split(" ")
-            if list_result[0] == "uno":
-                list_result[0] = list_result[0].replace("uno", "una")
+            # "uno" is the first word for positive amounts, but the second
+            # one when a negative amount is prefixed with "meno".
+            if "uno" in list_result[:2]:
+                list_result[list_result.index("uno")] = "una"
                 result = " ".join(list_result)
         result = result.replace("uno", "un")
         return result
